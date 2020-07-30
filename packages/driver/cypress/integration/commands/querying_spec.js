@@ -1796,6 +1796,18 @@ describe('src/cy/commands/querying', () => {
       })
     })
 
+    it('returns elements found first when multiple siblings found', () => {
+      cy.contains('li', 'asdf').then(($li) => {
+        expect($li).to.have.text('asdf 1')
+      })
+    })
+
+    it.only('zero', () => {
+      cy.contains('li', 'asdf').then(($li) => {
+        expect($li).to.have.text('asdf 1')
+      })
+    })
+
     it('returns first ul when multiple uls', () => {
       cy.contains('ul', 'jkl').then(($ul) => {
         expect($ul.find('li:first')).to.have.text('jkl 1')

@@ -470,7 +470,8 @@ module.exports = (Commands, Cypress, cy, state) => {
         }
 
         options._log = Cypress.log({
-          message: _.compact([filter, text]),
+          // https://github.com/cypress-io/cypress/issues/1119
+          message: _.compact([filter, _.toString(text)]),
           type: subject ? 'child' : 'parent',
           timeout: options.timeout,
           consoleProps: () => {
